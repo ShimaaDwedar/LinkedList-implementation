@@ -161,6 +161,12 @@ public class MySpecialLinkedListUtils {
 		LinkedListNode list=head;
 		LinkedListNode point=list.next;
 		LinkedListNode NewList=new LinkedListNode ();
+		LinkedListNode first=new LinkedListNode ();
+		LinkedListNode second=new LinkedListNode ();
+		
+       if (head==null||head.next==null) {
+    	   return head;
+       }
 		
 		while(point!=null) {
 			point=point.next;
@@ -170,19 +176,10 @@ public class MySpecialLinkedListUtils {
 		}
 		NewList=list.next;
 		list.next=null;
-		
-		
-       if (head==null||head.next==null) {
-    	   return head;
-       }
-        mergeSort(head);
-		mergeSort(NewList);
-		head=merge(head,NewList);
-		
-		for(int i=0;i<6;i++) {
-			System.out.println(head.value);
-			head=head.next;
-		}
+        
+        	first=mergeSort(head);
+		second=mergeSort(NewList);
+		head= merge(first,second);
 		return head;
 	}
 
